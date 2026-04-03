@@ -1,6 +1,7 @@
 import express from "express";
 import multer from "multer";
 import {
+  getAllRefIds,
   getHistoryByLocation,
   getHistoryByRefId,
   saveData,
@@ -18,5 +19,6 @@ soilRouter.post(
   uploadImages
 );
 soilRouter.post("/save-data", saveData);
+soilRouter.get("/history/refs", getAllRefIds);
 soilRouter.get("/history/ref/:refId", getHistoryByRefId);
 soilRouter.get("/history/location/:location", getHistoryByLocation);

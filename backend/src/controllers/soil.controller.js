@@ -190,3 +190,15 @@ export const getHistoryByLocation = async (req, res, next) => {
     next(error);
   }
 };
+
+export const getAllRefIds = async (_req, res, next) => {
+  try {
+    const data = await Soil.find({}, { _id: 0, refId: 1, location: 1 })
+      .sort({ refId: 1 })
+      .lean();
+
+    res.json(data);
+  } catch (error) {
+    next(error);
+  }
+};
